@@ -79,6 +79,24 @@ const Ray = function(){
       }
       return newObj
     },
+
+    map: function(func){
+      const newObj = Ray()
+      for (let i=0; i<this.length; i++){
+        newObj.push(func(this[i],i,this))
+      }
+      return newObj
+    },
+
+    filter: function(func){
+      const newObj = Ray()
+      for (let i=0; i<this.length; i++){
+        if (func(this[i],i,this)===true){
+          newObj.push(this[i])
+        }
+      }
+      return newObj
+    },
   }
 }
 
